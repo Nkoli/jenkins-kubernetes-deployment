@@ -10,7 +10,7 @@ podTemplate(label: label, containers: [
         image: 'docker',
         command: 'cat',
         ttyEnabled: true
-    )
+    ),
     containerTemplate(
         name: 'kubectl',
         image: 'lachlanevenson/k8s-kubectl',
