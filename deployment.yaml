@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: hello-jenkins
+    labels:
+        app: hello-jenkins
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: hello-jenkins
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                app: hello-jenkins
+                tier: hello-jenkins
+        spec:
+            containers:
+            - name: hello-jenkins
+              image: udoyen/hello-jenkins
+              imagePullPolicy: Always
+              ports:
+              - containerPort: 5000
+                name: hello-jenkins

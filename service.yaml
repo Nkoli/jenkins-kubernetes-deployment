@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: hello-jenkins
+    labels:
+        app: hello-jenkins
+spec:
+    ports:
+    - port: 5000
+      targetPort: 5000
+    selector:
+      app: hello-jenkins
+      tier: hello-jenkins
+    type: LoadBalancer
