@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: hello-jenkins
+    name: jenkinskubernetesdeployment
     labels:
-        app: hello-jenkins
+        app: jenkinskubernetesdeployment
 spec:
     replicas: 1
     selector:
         matchLabels:
-            app: hello-jenkins
+            app: jenkinskubernetesdeployment
     strategy:
         type: Recreate
     template:
         metadata:
             labels:
-                app: hello-jenkins
-                tier: hello-jenkins
+                app: jenkinskubernetesdeployment
+                tier: jenkinskubernetesdeployment
         spec:
             containers:
-            - name: hello-jenkins
-              image: udoyen/hello-jenkins
+            - name: jenkinskubernetesdeployment
+              image: ivelia/jenkinskubernetesdeployment
               imagePullPolicy: Always
               ports:
               - containerPort: 5000
-                name: hello-jenkins
+                name: jenkinskubernetesdeployment
