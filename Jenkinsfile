@@ -43,7 +43,7 @@ podTemplate(label: label, containers: [
         stage('Kubernetes Deployment') {
             container('kubectl') {
                 sh "sed -i 's/image:\\s*ivelia\\/jenkinskubernetesdeployment/image: ivelia\\/jenkinskubernetesdeployment:${BUILD_NUMBER}/g' ${WORKSPACE}/deployment.yaml"
-                sh "sed -i 's/image:\\s*ivelia\\/jenkinskubernetesdeployment/image: ivelia\\/:${BUILD_NUMBER}/g' ${WORKSPACE}/deployment.yaml"
+                sh "sed -i 's/image:\\s*ivelia\\/jenkinskubernetesdeployment/image: ivelia\\:${BUILD_NUMBER}/g' ${WORKSPACE}/deployment.yaml"
                  sh "kubectl apply -f ${WORKSPACE}/deployment.yaml"
                  sh "kubectl apply -f service.yaml"
             }
