@@ -24,7 +24,7 @@ podTemplate(label: label, containers: [
         )
     ]
 ) {
-    registry = "ivelia/jenkinskubernetesdeployment"
+    registry = "ivelia/jenkins-k8s"
     registryCredential = "ivelia"
     dockerImage = ''
     node(label) {
@@ -42,7 +42,7 @@ podTemplate(label: label, containers: [
 
         stage('Kubernetes Deployment') {
             container('kubectl') {
-                sh "sed -i 's/image:\\s*ivelia\\/jenkinskubernetesdeployment/image: ivelia\\/jenkinskubernetesdeployment:${BUILD_NUMBER}/g' ${WORKSPACE}/deployment.yaml"
+                sh "sed -i 's/image:\\s*ivelia\\/jenkins-k8s/image: ivelia\\/jenkins-k8s:${BUILD_NUMBER}/g' ${WORKSPACE}/deployment.yaml"
                  sh "kubectl apply -f ${WORKSPACE}/deployment.yaml"
                  sh "kubectl apply -f service.yaml"
             }

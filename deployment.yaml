@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: jenkinskubernetesdeployment
+    name: jenkins-k8s
     labels:
-        app: jenkinskubernetesdeployment
+        app: jenkins-k8s
 spec:
     replicas: 1
     selector:
         matchLabels:
-            app: jenkinskubernetesdeployment
+            app: jenkins-k8s
     strategy:
         type: Recreate
     template:
         metadata:
             labels:
-                app: jenkinskubernetesdeployment
-                tier: jenkinskubernetesdeployment
+                app: jenkins-k8s
+                tier: jenkins-k8s
         spec:
             containers:
-            - name: jenkinskubernetesdeployment
-              image: ivelia/jenkinskubernetesdeployment
+            - name: jenkins-k8s
+              image: ivelia/jenkins-k8s
               imagePullPolicy: Always
               ports:
               - containerPort: 5000
-                name: jenkinskubernetesdeployment
+                name: jenkins-k8s

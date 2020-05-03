@@ -15,9 +15,9 @@
     subjects:
       - kind: ServiceAccount
         # Reference to upper's `metadata.name`
-        name: default
+        name: jenkins
         # Reference to upper's `metadata.namespace`
-        namespace: default
+        namespace: jenkins
     roleRef:
       kind: ClusterRole
       name: cluster-admin
