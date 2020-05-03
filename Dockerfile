@@ -5,4 +5,4 @@ COPY requirements.txt /opt/services/djangoapp/src
 RUN pip install -r requirements.txt
 COPY . /opt/services/djangoapp/src
 EXPOSE 6060
-CMD ["gunicorn", "--bind", ":6060", "helloworld.wsgi:application"]
+CMD ["python", "manage.py", "runserver", "6060"]
